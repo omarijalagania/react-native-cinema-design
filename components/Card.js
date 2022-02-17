@@ -74,7 +74,7 @@ export default function Card() {
             data={movies}
             renderItem={renderItem}
             sliderWidth={windowWidth}
-            itemWidth={windowWidth / 1.5}
+            itemWidth={250}
             firstItem={1}
             onSnapToItem={(index) => setActiveIndex(index)}
           />
