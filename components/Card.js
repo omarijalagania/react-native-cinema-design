@@ -3,6 +3,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { Text, View, ImageBackground, Image, Dimensions } from "react-native";
 import Carousel from "react-native-snap-carousel";
 import { AirbnbRating } from "react-native-ratings";
+import * as Animatable from "react-native-animatable";
 import Icons from "./Icons";
 
 const movies = [
@@ -62,7 +63,7 @@ export default function Card() {
       }}
     >
       <LinearGradient
-        colors={["rgba(0,0,0,0.3)", "rgba(255,255,255,1)"]}
+        colors={["rgba(0,0,0,0.2)", "rgba(255,255,255,1)"]}
         style={{
           flex: 1,
           justifyContent: "flex-end",
@@ -77,6 +78,7 @@ export default function Card() {
             sliderWidth={windowWidth}
             itemWidth={250}
             firstItem={1}
+            inactiveSlideScale={0.7}
             onSnapToItem={(index) => setActiveIndex(index)}
           />
         </View>
@@ -96,6 +98,7 @@ const CardContent = ({ windowHeight, item }) => {
         justifyContent: "space-between",
         overflow: "hidden",
         marginBottom: windowHeight / 20,
+        elevation: 20,
       }}
     >
       <CardImage item={item} />
@@ -103,14 +106,16 @@ const CardContent = ({ windowHeight, item }) => {
         style={{
           position: "relative",
           left: "75%",
-          top: -10,
+          top: -20,
         }}
       >
         <Icons name="heart" />
       </View>
-      <View style={{ padding: -70 }}>
+      <View style={{ marginTop: -20 }}>
         <CardTitle item={item} />
-        <AirbnbRating reviews={false} size={20} />
+        <View style={{ marginTop: 5 }}>
+          <AirbnbRating reviews={false} size={20} />
+        </View>
       </View>
       <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
         <RatingBtn genre="Action" />
