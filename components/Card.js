@@ -3,6 +3,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { Text, View, ImageBackground, Image, Dimensions } from "react-native";
 import Carousel from "react-native-snap-carousel";
 import { AirbnbRating } from "react-native-ratings";
+import Icons from "./Icons";
 
 const movies = [
   {
@@ -98,6 +99,15 @@ const CardContent = ({ windowHeight, item }) => {
       }}
     >
       <CardImage item={item} />
+      <View
+        style={{
+          position: "relative",
+          left: "75%",
+          top: -10,
+        }}
+      >
+        <Icons name="heart" />
+      </View>
       <View style={{ padding: -70 }}>
         <CardTitle item={item} />
         <AirbnbRating reviews={false} size={20} />
