@@ -99,37 +99,46 @@ const CardContent = ({ windowHeight, item, parallaxProps }) => {
   return (
     <View
       style={{
-        width: 250,
-        height: 550,
-        backgroundColor: "#f5f5f5",
-        borderRadius: 400,
-        justifyContent: "space-between",
-        overflow: "hidden",
-        marginBottom: windowHeight / 20,
-        elevation: 20,
+        shadowColor: "black",
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.3,
+        shadowRadius: 5,
       }}
     >
-      <CardImage item={item} parallaxProps={parallaxProps} />
       <View
         style={{
-          position: "relative",
-          left: "75%",
-          top: -20,
+          width: 250,
+          height: 550,
+          backgroundColor: "#f5f5f5",
+          borderRadius: 400,
+          justifyContent: "space-between",
+          overflow: "hidden",
+          marginBottom: windowHeight / 20,
+          elevation: 10,
         }}
       >
-        <Icons name="heart" />
-      </View>
-      <View style={{ marginTop: -20 }}>
-        <CardTitle item={item} />
-        <View style={{ marginTop: 5 }}>
-          <AirbnbRating reviews={false} size={20} />
+        <CardImage item={item} parallaxProps={parallaxProps} />
+        <View
+          style={{
+            position: "relative",
+            left: "75%",
+            top: -20,
+          }}
+        >
+          <Icons name="heart" />
         </View>
+        <View style={{ marginTop: -20 }}>
+          <CardTitle item={item} />
+          <View style={{ marginTop: 5 }}>
+            <AirbnbRating reviews={false} size={20} />
+          </View>
+        </View>
+        <View style={{ justifyContent: "center", alignItems: "center" }}>
+          <RatingBtn genre="Fantasy" />
+          <RatingBtn genre="Documentary" />
+        </View>
+        <BookNow />
       </View>
-      <View style={{ justifyContent: "center", alignItems: "center" }}>
-        <RatingBtn genre="Fantasy" />
-        <RatingBtn genre="Documentary" />
-      </View>
-      <BookNow />
     </View>
   );
 };
