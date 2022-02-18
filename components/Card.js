@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { Text, View, ImageBackground, Image, Dimensions } from "react-native";
-import Carousel from "react-native-snap-carousel";
+import Carousel, { ParallaxImage } from "react-native-snap-carousel";
 import { AirbnbRating } from "react-native-ratings";
-import * as Animatable from "react-native-animatable";
 import Icons from "./Icons";
+import parseErrorStack from "react-native/Libraries/Core/Devtools/parseErrorStack";
 
 const movies = [
   {
@@ -44,9 +44,16 @@ export default function Card() {
     setBgChange(movies.filter((movie) => movie.id === activeIndex));
   }, [activeIndex]);
 
-  const renderItem = ({ item, index }) => {
-    return <CardContent item={item} windowHeight={windowHeight} />;
+  const renderItem = ({ item, index }, parallaxProps) => {
+    return (
+      <CardContent
+        parallaxProps={parallaxProps}
+        item={item}
+        windowHeight={windowHeight}
+      />
+    );
   };
+
   const windowWidth = Dimensions.get("window").width;
   const windowHeight = Dimensions.get("window").height;
   return (
@@ -73,6 +80,7 @@ export default function Card() {
       >
         <View style={{ position: "absolute" }}>
           <Carousel
+            hasParallaxImages={true}
             data={movies}
             renderItem={renderItem}
             sliderWidth={windowWidth}
@@ -87,7 +95,7 @@ export default function Card() {
   );
 }
 
-const CardContent = ({ windowHeight, item }) => {
+const CardContent = ({ windowHeight, item, parallaxProps }) => {
   return (
     <View
       style={{
@@ -101,7 +109,7 @@ const CardContent = ({ windowHeight, item }) => {
         elevation: 20,
       }}
     >
-      <CardImage item={item} />
+      <CardImage item={item} parallaxProps={parallaxProps} />
       <View
         style={{
           position: "relative",
@@ -126,20 +134,33 @@ const CardContent = ({ windowHeight, item }) => {
   );
 };
 
-const CardImage = ({ item }) => {
+const CardImage = ({ item, parallaxProps }) => {
   return (
-    <Image
+    <View
       style={{
         width: 220,
         height: 280,
         alignSelf: "center",
         borderRadius: 150,
         marginTop: 15,
+        overflow: "hidden",
       }}
-      source={{
-        uri: item.image,
-      }}
-    />
+    >
+      <ParallaxImage
+        style={{
+          width: 220,
+          height: 280,
+          alignSelf: "center",
+          borderRadius: 150,
+          marginTop: 1,
+        }}
+        source={{
+          uri: item.image,
+        }}
+        parallaxFactor={0.4}
+        {...parallaxProps}
+      />
+    </View>
   );
 };
 
