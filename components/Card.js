@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
+
 import { LinearGradient } from "expo-linear-gradient";
 import { Text, View, ImageBackground, Image, Dimensions } from "react-native";
 import Carousel, { ParallaxImage } from "react-native-snap-carousel";
 import { AirbnbRating } from "react-native-ratings";
 import Icons from "./Icons";
-import parseErrorStack from "react-native/Libraries/Core/Devtools/parseErrorStack";
 
 const movies = [
   {
@@ -125,9 +125,9 @@ const CardContent = ({ windowHeight, item, parallaxProps }) => {
           <AirbnbRating reviews={false} size={20} />
         </View>
       </View>
-      <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
-        <RatingBtn genre="Action" />
+      <View style={{ justifyContent: "center", alignItems: "center" }}>
         <RatingBtn genre="Fantasy" />
+        <RatingBtn genre="Documentary" />
       </View>
       <BookNow />
     </View>
@@ -187,10 +187,9 @@ const RatingBtn = ({ genre }) => {
         paddingHorizontal: 10,
         paddingVertical: 5,
         borderWidth: 1,
-        width: "30%",
+        width: "45%",
         borderRadius: 100,
-
-        marginTop: 20,
+        marginTop: 10,
       }}
     >
       <Text style={{ alignSelf: "center" }}>{genre}</Text>
