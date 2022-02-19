@@ -25,6 +25,8 @@ const MovieDetails = () => {
         <RatingBtn genre="Documentary" />
       </View>
       <Cast />
+      <MovieInfo />
+      <StoryLine />
     </ScrollView>
   );
 };
@@ -142,6 +144,60 @@ const Cast = () => {
           </View>
         </View>
       </ScrollView>
+    </View>
+  );
+};
+
+//Movie Info
+
+const MovieInfo = () => {
+  return (
+    <View
+      style={{
+        width: "90%",
+        padding: 30,
+        backgroundColor: "#f5f5f5",
+        alignSelf: "center",
+        borderRadius: 20,
+        borderWidth: 1,
+        borderColor: "gray",
+        marginTop: 30,
+      }}
+    >
+      <View style={{ flexDirection: "row", marginBottom: 10 }}>
+        <Text style={{ fontSize: 16, fontWeight: "500" }}>Directed By:</Text>
+        <Text style={{ fontSize: 15 }}> Adam Wingard</Text>
+      </View>
+      <View style={{ flexDirection: "row", marginBottom: 10 }}>
+        <Text style={{ fontSize: 16, fontWeight: "500" }}> Year: </Text>
+        <Text style={{ fontSize: 15 }}> 2021</Text>
+      </View>
+      <View style={{ flexDirection: "row", marginBottom: 10 }}>
+        <Text style={{ fontSize: 16, fontWeight: "500" }}> Duration: </Text>
+        <Text style={{ fontSize: 15 }}> 15 5min</Text>
+      </View>
+      <View style={{ flexDirection: "row", marginBottom: 10 }}>
+        <Text style={{ fontSize: 16, fontWeight: "500" }}> Distribtion: </Text>
+        <Text style={{ fontSize: 15 }}> Warner Bros.</Text>
+      </View>
+    </View>
+  );
+};
+
+//StoryLine
+
+const StoryLine = () => {
+  return (
+    <View style={{ marginTop: 20, width: "90%" }}>
+      <Text style={{ fontSize: 24, marginBottom: 20, marginLeft: 20 }}>
+        Storyline
+      </Text>
+      <Text style={{ paddingHorizontal: 20, fontSize: 15 }}>
+        The epic next chapter in the cinematic Monsterverse pits two of the
+        greatest icons in motion picture history against one another - the
+        fearsome Godzilla and the mighty Kong - with humanity caught in the
+        balance.
+      </Text>
     </View>
   );
 };
