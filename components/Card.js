@@ -173,7 +173,7 @@ const CardImage = ({ item, parallaxProps }) => {
   );
 };
 
-const CardTitle = ({ item }) => {
+export const CardTitle = ({ item }) => {
   return (
     <Text
       style={{
@@ -189,7 +189,7 @@ const CardTitle = ({ item }) => {
   );
 };
 
-const RatingBtn = ({ genre }) => {
+export const RatingBtn = ({ genre }) => {
   return (
     <View
       style={{

@@ -4,11 +4,13 @@ import { StyleSheet, Text, View, ImageBackground, Image } from "react-native";
 
 import { Rating, AirbnbRating } from "react-native-ratings";
 import Card from "./components/Card";
+import MovieDetails from "./screens/MovieDetails";
 
 export default function App() {
   return (
     <>
-      <Card />
+      {/* <Card /> */}
+      <MovieDetails />
     </>
   );
 }
